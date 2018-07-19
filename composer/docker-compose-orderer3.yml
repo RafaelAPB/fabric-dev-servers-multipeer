@@ -2,7 +2,7 @@ version: '2'
 
 services:
   orderer3.example.com:
-    container_name: orderer3.example.com
+    container_name: orderer2.example.com
     image: hyperledger/fabric-orderer:$ARCH-1.1.0
     environment:
       - ORDERER_GENERAL_LOGLEVEL=debug
@@ -17,4 +17,4 @@ services:
       - 7050:7050
     volumes:
         - ./:/etc/hyperledger/configtx
-        - ./crypto-config/ordererOrganizations/example.com/orderers/orderer3.example.com/msp:/etc/hyperledger/msp/orderer/msp
+        - ./crypto-config/ordererOrganizations/example.com/orderers/orderer2.example.com/msp:/etc/hyperledger/msp/orderer/msp
