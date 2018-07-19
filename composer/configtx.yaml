@@ -177,7 +177,6 @@ Orderer: &OrdererDefaults
 
     Addresses:
         # - orderer.example.com:7050
-        - {IP-HOST-1}:7050
         - orderer1.example.com:7050
         - orderer2.example.com:7050
         - orderer3.example.com:7050
@@ -205,8 +204,10 @@ Orderer: &OrdererDefaults
         # Brokers: A list of Kafka brokers to which the orderer connects
         # NOTE: Use IP:port notation
         Brokers:
-            - {KAFKA-HOST-1}:9092
-            - 127.0.0.1:9092
+            - kafka1.example.com:9092
+            - kafka2.example.com:9092
+            - kafka3.example.com:9092
+            - kafka4.example.com:9092
 
     # Organizations is the list of orgs which are defined as participants on
     # the orderer side of the network

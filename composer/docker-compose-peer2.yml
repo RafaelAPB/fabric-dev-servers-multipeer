@@ -2,7 +2,7 @@ version: '2'
 
 services:
   ca.org2.example.com:
-    image: hyperledger/fabric-ca:$ARCH-1.0.4
+    image: hyperledger/fabric-ca:$ARCH-1.1.0
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_CA_NAME=ca.org2.example.com
@@ -18,7 +18,7 @@ services:
 
   peer0.org2.example.com:
     container_name: peer0.org2.example.com
-    image: hyperledger/fabric-peer:$ARCH-1.0.4
+    image: hyperledger/fabric-peer:$ARCH-1.1.0
     environment:
       - CORE_LOGGING_PEER=debug
       - CORE_CHAINCODE_LOGGING_LEVEL=DEBUG
@@ -45,7 +45,7 @@ services:
 
   couchdb3:
     container_name: couchdb3
-    image: hyperledger/fabric-couchdb:$ARCH-1.0.4
+    image: hyperledger/fabric-couchdb:$ARCH-1.1.0
     ports:
       - 8984:5984
     environment:
