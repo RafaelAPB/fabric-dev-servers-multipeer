@@ -24,6 +24,9 @@ Profiles:
                 Organizations:
                     - *Org1
                     - *Org2
+                    - *Org3
+                    - *Org4
+                    - *Org5
     ComposerChannel:
         Consortium: ComposerConsortium
         Application:
@@ -31,6 +34,9 @@ Profiles:
             Organizations:
                 - *Org1
                 - *Org2
+                - *Org3
+                - *Org4
+                - *Org5
 
 ################################################################################
 #
@@ -97,8 +103,64 @@ Organizations:
             # encoded in the genesis block in the Application section context
             - Host: peer0.org2.example.com
               Port: 7051
+    - &Org3
+        # DefaultOrg defines the organization which is used in the sampleconfig
+        # of the fabric.git development environment
+        Name: Org3
 
+        # ID to load the MSP definition as
+        ID: Org3MSP
 
+        MSPDir: crypto-config/peerOrganizations/org3.example.com/msp
+
+        # turn off security for the peer
+        AdminPrincipal: Role.MEMBER
+
+        AnchorPeers:
+            # AnchorPeers defines the location of peers which can be used
+            # for cross org gossip communication.  Note, this value is only
+            # encoded in the genesis block in the Application section context
+            - Host: peer0.org3.example.com
+              Port: 7051
+    - &Org4
+        # DefaultOrg defines the organization which is used in the sampleconfig
+        # of the fabric.git development environment
+        Name: Org4
+
+        # ID to load the MSP definition as
+        ID: Org4MSP
+
+        MSPDir: crypto-config/peerOrganizations/org4.example.com/msp
+
+        # turn off security for the peer
+        AdminPrincipal: Role.MEMBER
+
+        AnchorPeers:
+            # AnchorPeers defines the location of peers which can be used
+            # for cross org gossip communication.  Note, this value is only
+            # encoded in the genesis block in the Application section context
+            - Host: peer0.org4.example.com
+              Port: 7051
+
+    - &Org5
+        # DefaultOrg defines the organization which is used in the sampleconfig
+        # of the fabric.git development environment
+        Name: Org5
+
+        # ID to load the MSP definition as
+        ID: Org5MSP
+
+        MSPDir: crypto-config/peerOrganizations/org5.example.com/msp
+
+        # turn off security for the peer
+        AdminPrincipal: Role.MEMBER
+
+        AnchorPeers:
+            # AnchorPeers defines the location of peers which can be used
+            # for cross org gossip communication.  Note, this value is only
+            # encoded in the genesis block in the Application section context
+            - Host: peer0.org5.example.com
+              Port: 7051
 ################################################################################
 #
 #   SECTION: Orderer
@@ -111,11 +173,15 @@ Orderer: &OrdererDefaults
 
     # Orderer Type: The orderer implementation to start
     # Available types are "solo" and "kafka"
-    OrdererType: solo
+    OrdererType: kafka
 
     Addresses:
         # - orderer.example.com:7050
         - {IP-HOST-1}:7050
+        - orderer1.example.com:7050
+        - orderer2.example.com:7050
+        - orderer3.example.com:7050
+
 
     # Batch Timeout: The amount of time to wait before creating a batch
     BatchTimeout: 2s
@@ -139,6 +205,7 @@ Orderer: &OrdererDefaults
         # Brokers: A list of Kafka brokers to which the orderer connects
         # NOTE: Use IP:port notation
         Brokers:
+            - {KAFKA-HOST-1}:9092
             - 127.0.0.1:9092
 
     # Organizations is the list of orgs which are defined as participants on
