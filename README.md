@@ -51,7 +51,7 @@ make release
 ### Download the repo for Multi Org
 ```
 cd ~
-curl -sSL https://goo.gl/byy2Qj | bash -s 1.0.4
+curl -sSL https://goo.gl/byy2Qj | bash -s 1.1.0
 mkdir fabric-binaries
 mv bin fabric-binaries/bin
 echo 'export PATH=~/fabric-binaries/bin:$PATH' >> ~/.profile
