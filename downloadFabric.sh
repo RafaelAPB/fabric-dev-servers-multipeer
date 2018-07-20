@@ -14,4 +14,4 @@ docker pull hyperledger/fabric-peer:$ARCH-1.1.0
 docker pull hyperledger/fabric-ca:$ARCH-1.1.0
 docker pull hyperledger/fabric-ccenv:$ARCH-1.1.0
 docker pull hyperledger/fabric-orderer:$ARCH-1.1.0
-docker pull hyperledger/fabric-couchdb:$ARCH-1.1.0
+docker pull hyperledger/fabric-couchdb:$ARCH-0.4.6
