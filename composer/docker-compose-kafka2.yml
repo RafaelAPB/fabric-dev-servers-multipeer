@@ -1,0 +1,22 @@
+version: '2'
+
+
+services:
+  kafka2.example.com:
+    container_name: kafka2.example.com
+    image: hyperledger/fabric-kafka
+    restart: always
+    environment:
+      - KAFKA_MESSAGE_MAX_BYTES=103809024 # 99 * 1024 * 1024 B
+      - KAFKA_REPLICA_FETCH_MAX_BYTES=103809024 # 99 * 1024 * 1024 B
+      - KAFKA_UNCLEAN_LEADER_ELECTION_ENABLE=false
+      - KAFKA_MIN_INSYNC_REPLICAS=2
+      - KAFKA_DEFAULT_REPLICATION_FACTOR=3
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper0.example.com:2181,zookeeper1.example.com:2181,zookeeper2.example.com:2181
+    volumes:
+      - /etc/hosts:/etc/hosts
+    environment:
+      - KAFKA_BROKER_ID=2
+    ports:
+      - 9092:9092
+      - 9093:9093

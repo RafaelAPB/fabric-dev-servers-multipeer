@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+
+  zookeeper2.example.com:
+    container_name: zookeeper2.example.com
+    image: hyperledger/fabric-zookeeper
+    environment:
+      - ZOO_SERVERS=server.1=zookeeper0.example.com:2888:3888 server.2=zookeeper1.example.com:2888:3888 server.3=zookeeper2.example.com:2888:3888
+      - ZOO_MY_ID=3
+    volumes:
+      - /etc/hosts:/etc/hosts
+    restart: always
+    ports:
+      - 2181:2181
+      - 2888:2888
+      - 3888:3888
