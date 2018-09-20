@@ -31,36 +31,67 @@ fi
 cat << EOF > org1onlyconnection.json
 {
     "name": "byfn-network-org1-only",
-    "type": "hlfv1",
-    "orderers": [
-        {
-            "url" : "grpc://{IP-ORDERER-0}:7050",
-            "hostnameOverride" : "orderer0.example.com"
-        },
-        {
-            "url" : "grpc://{IP-ORDERER-1}:7050",
-            "hostnameOverride" : "orderer1.example.com"
-        },
-        {
-            "url" : "grpc://{IP-ORDERER-2}:7050",
-            "hostnameOverride" : "orderer2.example.com"
+    "x-type": "hlfv1",
+    "x-commitTimeout": 300,
+    "version": "1.0.0",
+    "client": {
+        "organization": "Org1",
+        "connection": {
+            "timeout": {
+                "peer": {
+                    "endorser": "300",
+                    "eventHub": "300",
+                    "eventReg": "300"
+                },
+                "orderer": "300"
+            }
         }
-    ],
-    "ca": {
-        "url": "http://localhost:7054",
-        "name": "ca.org1.example.com",
-        "hostnameOverride": "ca.org1.example.com"
     },
-    "peers": [
-        {
-            "requestURL": "grpc://localhost:7051",
-            "eventURL": "grpc://localhost:7053",
-            "hostnameOverride": "peer0.org1.example.com"
+    "orderers": {
+        "orderer0.example.com": {
+            "url": "grpc://${HOST-1}:7050"
+        },
+        "orderer1.example.com": {
+            "url": "grpc://${HOST-2}:7050"
+        },
+        "orderer2.example.com": {
+            "url": "grpc://${HOST-3}:7050"
         }
-    ],
-    "channel": "composerchannel",
-    "mspID": "Org1MSP",
-    "timeout": 300
+    },
+   "certificateAuthorities": {
+        "ca.org1.example.com": {
+            "url": "http://${HOST-0}:7054",
+            "caName": "ca.org1.example.com"
+        }
+    },
+    "peers": {
+       {
+        "peer0.org1.example.com": {
+            "url": "grpc://${HOST-0}:7051",
+            "eventUrl": "grpc://${HOST-0}:7053"
+        }
+    },
+    "channels": {
+        "composerchannel": {
+            "orderers": [
+                "orderer0.example.com"
+            ],
+            "peers": {
+                "peer0.org1.example.com": {}
+            }
+        }
+    },
+    "organizations": {
+        "Org1": {
+            "mspid": "Org1MSP",
+            "peers": [
+                "peer0.org1.example.com"
+            ],
+            "certificateAuthorities": [
+                "ca.org1.example.com"
+            ]
+        }
+    }
 }
 EOF
 
