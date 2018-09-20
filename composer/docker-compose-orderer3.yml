@@ -1,7 +1,7 @@
 version: '2'
 
 services:
-  orderer3.example.com:
+  orderer2.example.com:
     container_name: orderer2.example.com
     image: hyperledger/fabric-orderer:$ARCH-1.1.0
     environment:
