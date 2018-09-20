@@ -1202,11 +1202,11 @@ rm -rf org5onlyconnection.json
 echo "Hyperledger Composer PeerAdmin card has been imported"
 composer card list
 
-composer runtime install -c PeerAdmin@byfn-network-org1-only -n trade-network
-composer runtime install -c PeerAdmin@byfn-network-org2-only -n trade-network
-composer runtime install -c PeerAdmin@byfn-network-org3-only -n trade-network
-composer runtime install -c PeerAdmin@byfn-network-org4-only -n trade-network
-composer runtime install -c PeerAdmin@byfn-network-org5-only -n trade-network
+composer runtime install -c PeerAdmin@byfn-network-org1-only -n bcar-network
+composer runtime install -c PeerAdmin@byfn-network-org2-only -n bcar-network
+composer runtime install -c PeerAdmin@byfn-network-org3-only -n bcar-network
+composer runtime install -c PeerAdmin@byfn-network-org4-only -n bcar-network
+composer runtime install -c PeerAdmin@byfn-network-org5-only -n bcar-network
 
 composer identity request -c PeerAdmin@byfn-network-org1-only -u admin -s adminpw -d alice
 composer identity request -c PeerAdmin@byfn-network-org2-only -u admin -s adminpw -d bob
@@ -1214,14 +1214,14 @@ composer identity request -c PeerAdmin@byfn-network-org3-only -u admin -s adminp
 composer identity request -c PeerAdmin@byfn-network-org4-only -u admin -s adminpw -d dan
 composer identity request -c PeerAdmin@byfn-network-org5-only -u admin -s adminpw -d mike
 
-composer network start -c PeerAdmin@byfn-network-org1 -a trade-network.bna -o endorsementPolicyFile=endorsement-policy.json -A alice -C alice/admin-pub.pem -A bob -C bob/admin-pub.pem -A john -C john/admin-pub.pem -A dan -C dan/admin-pub.pem -A mike -C mike/admin-pub.pem
-composer card create -p org1connection.json -u alice -n trade-network -c alice/admin-pub.pem -k alice/admin-priv.pem
-composer card import -f alice@trade-network.card
-composer card create -p org2connection.json -u bob -n trade-network -c bob/admin-pub.pem -k bob/admin-priv.pem
-composer card import -f bob@trade-network.card
-composer card create -p org3connection.json -u john -n trade-network -c john/admin-pub.pem -k john/admin-priv.pem
-composer card import -f john@trade-network.card
-composer card create -p org4connection.json -u dan -n trade-network -c dan/admin-pub.pem -k dan/admin-priv.pem
-composer card import -f dan@trade-network.card
-composer card create -p org5connection.json -u mike -n trade-network -c mike/admin-pub.pem -k mike/admin-priv.pem
-composer card import -f mike@trade-network.card
+composer network start -c PeerAdmin@byfn-network-org1 -a bcar-network.bna -o endorsementPolicyFile=endorsement-policy.json -A alice -C alice/admin-pub.pem -A bob -C bob/admin-pub.pem -A john -C john/admin-pub.pem -A dan -C dan/admin-pub.pem -A mike -C mike/admin-pub.pem
+composer card create -p org1connection.json -u alice -n bcar-network -c alice/admin-pub.pem -k alice/admin-priv.pem
+composer card import -f alice@bcar-network.card
+composer card create -p org2connection.json -u bob -n bcar-network -c bob/admin-pub.pem -k bob/admin-priv.pem
+composer card import -f bob@bcar-network.card
+composer card create -p org3connection.json -u john -n bcar-network -c john/admin-pub.pem -k john/admin-priv.pem
+composer card import -f john@bcar-network.card
+composer card create -p org4connection.json -u dan -n bcar-network -c dan/admin-pub.pem -k dan/admin-priv.pem
+composer card import -f dan@bcar-network.card
+composer card create -p org5connection.json -u mike -n bcar-network -c mike/admin-pub.pem -k mike/admin-priv.pem
+composer card import -f mike@bcar-network.card
